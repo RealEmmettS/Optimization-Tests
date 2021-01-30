@@ -1,3 +1,8 @@
+import java.lang.*;
+import java.io.*;
+import java.util.*;
+
+
 
 public class methodsForTesting {
 	
@@ -69,7 +74,30 @@ public class methodsForTesting {
 	
 	
 	
+	public static void testPalindrome(String x) {
+		
+		System.out.println("NORMAL: "+(isPalindrome(x) == true ? "Palindrome" : "None"));
+		
+	}
 	
+	public static boolean isPalindrome(String x) { //Optimized
+		
+		StringBuilder z = new StringBuilder();
+		
+        z.append(x);
+		String y = z.reverse().toString().toLowerCase().replace(" ", "");
+		
+		String xLow = x.toLowerCase().replace(" ", "");
+		
+		
+		
+		//System.out.println(xLow);
+		//System.out.println(y);
+		//System.out.println((xLow.equals(y)));
+		
+		return (xLow.equals(y));
+		
+	}
 	
 	
 	
