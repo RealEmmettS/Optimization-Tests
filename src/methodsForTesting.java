@@ -1,4 +1,5 @@
 import java.lang.*;
+import java.util.ArrayList;
 import java.io.*;
 import java.util.*;
 
@@ -8,14 +9,28 @@ public class methodsForTesting {
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public static void testEvenOdd(int numberOfTests) {
+	public static void testEvenOdd(int numberOfTests, int maxGeneration) {
+		
+		ArrayList correctAttempts = new ArrayList();
 		
 		for (int i=0; i<numberOfTests; i++) {
-			int randInt = (int) (Math.random()*1000);
+			int randInt = (int) (Math.random()*maxGeneration);
+			System.out.println("Attempt Number: " + i);
 			System.out.println(randInt);
 			System.out.println("BITWISE: "+(evenBitwise(randInt) == true ? "Even" : "Odd"));
 			System.out.println("NORMAL: "+(evenNormal(randInt) == true ? "Even" : "Odd"));
+			if (evenBitwise(randInt) == evenNormal(randInt)) {
+				correctAttempts.add("correct");
+			}
 			System.out.println("\n");
+		}
+		
+		System.out.println("\n\n\n");
+		//	Correct Attempts is the number of times the bitwise even or odd function output matched
+		//	the traditional even or odd function output
+		System.out.println("Correct Attempts: " + correctAttempts.size());
+		if (correctAttempts.size() == numberOfTests) {
+			System.out.println("All attempts were correct.");
 		}
 	}
 	
